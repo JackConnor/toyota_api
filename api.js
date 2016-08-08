@@ -8,6 +8,7 @@ module.exports = function(app){
   app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     // res.header("Access-Control-Allow-Origin", "http://localhost:8100");
+    // res.header("Access-Control-Allow-Origin", "http://localhost:5555");
     // res.header("Access-Control-Allow-Origin", "http://localhost:8101");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -21,10 +22,18 @@ module.exports = function(app){
     res.json('yo');
   });
 
-  app.get('/new/submission', function(req, res){
+  app.post('/new/submission', function(req, res){
+    console.log('here');
+    console.log(req.body);
     var sub = new Submission();
-    console.log(sub);
-    sub.firstName = 'jack';
+
+    sub.firstName = req.body.firstName;
+    sub.lastName = req.body.lastName;
+    sub.email = req.body.email;
+    sub.phoneNumber = req.body.phoneNumber;
+    sub.shopName = req.body.shopName;
+    sub.occupation = req.body.occupation;
+
     sub.save(function(err, newSub){
       res.json(newSub)
     })
