@@ -22,18 +22,16 @@ module.exports = function(app){
     res.json('yo');
   });
 
-  app.get('/new/submission/:firstname/:lastname/:email/:phone/:occupation/:shopname', function(req, res){
-    console.log('here');
-    console.log(req.body);
-    console.log(req.params);
+  app.get('/new/submission/:object', function(req, res){
+    req.body = JSON.parse(req.params.object);
     var sub = new Submission();
 
-    sub.firstName = req.params.firstname;
-    sub.lastName = req.params.lastname;
-    sub.email = req.params.email;
-    sub.phoneNumber = req.params.phone;
-    sub.shopName = req.params.shopname;
-    sub.occupation = req.params.occupation;
+    sub.firstName = req.body.firstName;
+    sub.lastName = req.body.lastName;
+    sub.email = req.body.email;
+    sub.phoneNumber = req.body.phoneNumber;
+    sub.shopName = req.body.shopName;
+    sub.occupation = req.body.occupation;
 
     sub.save(function(err, newSub){
       res.json(newSub)
