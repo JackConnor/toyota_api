@@ -13,6 +13,10 @@ module.exports = function(app){
     next();
   });
 
+  app.get('/', function(req, res){
+    res.json('made it');
+  });
+
   app.get('/jsonn', function(req, res){
     res.json('yo');
   });
