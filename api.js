@@ -29,7 +29,7 @@ module.exports = function(app){
     sub.firstName = req.body.firstName;
     sub.lastName = req.body.lastName;
     sub.email = req.body.email;
-    sub.phoneNumber = req.body.phoneNumber;
+    sub.phoneNumber = req.body.mobileNumber;
     sub.shopName = req.body.shopName;
     sub.occupation = req.body.occupation;
 

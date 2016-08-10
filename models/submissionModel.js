@@ -9,6 +9,7 @@ var submissionSchema = new Schema({
   ,email: String
   ,badgeId: String
   ,shopName: String
+  ,occupation: Array
 })
 
 module.exports = mongoose.model('Submission', submissionSchema);
